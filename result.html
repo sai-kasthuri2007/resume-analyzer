@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Analysis Result</title>
+
+    <style>
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+        }
+
+        .result-box {
+            width: 650px;
+
+            background: white;
+
+            padding: 45px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+            text-align: center;
+        }
+
+        h1 {
+            color: #222;
+
+            margin-bottom: 10px;
+        }
+
+        .message {
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+        .category {
+            background: #f1f3f5;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+        }
+
+        .category-label {
+            font-size: 14px;
+
+            color: #777;
+
+            margin-bottom: 8px;
+        }
+
+        .category-name {
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #222;
+        }
+
+        .skills {
+            background: #f8f9fa;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+        }
+
+        .skills h2,
+        .statistics h2 {
+            font-size: 20px;
+
+            margin-top: 0;
+        }
+
+        .skill-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+        }
+
+        .skill {
+            background: #222;
+
+            color: white;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+        }
+
+        .no-skills {
+            color: #777;
+        }
+
+        .statistics {
+            background: #f8f9fa;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-bottom: 30px;
+        }
+
+        .stat-container {
+            display: flex;
+
+            justify-content: space-around;
+
+            gap: 15px;
+        }
+
+        .stat {
+            flex: 1;
+
+            background: white;
+
+            padding: 15px;
+
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+
+            font-weight: bold;
+
+            color: #222;
+        }
+
+        .stat-label {
+            font-size: 13px;
+
+            color: #777;
+
+            margin-top: 5px;
+        }
+
+        a {
+            display: inline-block;
+
+            background: #222;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 12px 25px;
+
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="result-box">
+
+        <h1>Resume Analysis Complete</h1>
+
+        <p class="message">
+            Your resume has been analyzed successfully.
+        </p>
+
+
+        <!-- Predicted Category -->
+
+        <div class="category">
+
+            <div class="category-label">
+                Predicted Job Category
+            </div>
+
+            <div class="category-name">
+                {{ prediction }}
+            </div>
+
+        </div>
+
+
+        <!-- Detected Skills -->
+
+        <div class="skills">
+
+            <h2>Detected Skills</h2>
+
+            {% if skills %}
+
+                <div class="skill-list">
+
+                    {% for skill in skills %}
+
+                        <span class="skill">
+                            {{ skill }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p class="no-skills">
+                    No predefined skills were detected.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Resume Statistics -->
+
+        <div class="statistics">
+
+            <h2>Resume Statistics</h2>
+
+            <div class="stat-container">
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        {{ word_count }}
+                    </div>
+
+                    <div class="stat-label">
+                        Words
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        {{ page_count }}
+                    </div>
+
+                    <div class="stat-label">
+                        Pages
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        {{ skill_count }}
+                    </div>
+
+                    <div class="stat-label">
+                        Skills Detected
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <a href="/">
+            Analyze Another Resume
+        </a>
+
+    </div>
+
+</body>
+</html>
