@@ -3,3 +3,4 @@ pypdf
 scikit-learn
 numpy
 scipy
+gunicorn
